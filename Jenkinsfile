@@ -14,7 +14,7 @@ pipeline{
         }*/
         stage("Build Docker Image"){
             steps{
-                sh 'docker rmi -f myimage .'
+                sh 'docker build -t myimage .'
             }
         }
         stage('Build and Push Image'){
