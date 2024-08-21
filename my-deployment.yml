@@ -3,29 +3,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: my-deployment
-spec: 
+spec:
   replicas: 2
-  starategy:
-    type: Recreate
   selector:
     matchLabels:
       app: my-app
   template:
     metadata:
-      name: my-pod
-      label:
+      labels:
         app: my-app
     spec:
-      container:
+      containers:
       - image: saur666/myimage
-        name: mycontainer
+        name: my-container
         ports:
         - containerPort: 8501
 ...
 ---
 kind: Service
 apiVersion: v1
-metadata: 
+metadata:
   name: my-service
 spec:
   type: NodePort
@@ -33,6 +30,6 @@ spec:
     app: my-app
   ports:
   - port: 80
-    tagetPort: 8501
+    targetPort: 8501
     nodePort: 30001
 ...
