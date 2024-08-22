@@ -9,4 +9,4 @@ data = {
 df = pd.DataFrame(data)
 
 st.dataframe(df)
-st.write('Total fees = 70000')
+
